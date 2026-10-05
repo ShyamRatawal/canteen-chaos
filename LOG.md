@@ -86,4 +86,14 @@ you noticed it.
 
 
 
+### CC-02: "Can't read anything in dark mode"
 
+**Reproduced:** Toggled the dark and light mode and faced the same issue
+
+**Cause:** the .name-btn was inheriting color from a div tag .dish-body the color there was fixed instead of a var which changed with the theme.
+
+**Fix:** By changing the color in dish-body from a fixed color to a variable color which is already present in the root theme to match the colors. When the theme is light the .dish-body gets the value from the root and when its dark it gets the value from the dark theme code block
+
+**Checked:** Now when dark mode is on the text is visible and when light mode is on the text is still visible
+
+**Time:** Took me like 40 mins to learn some new CSS and inheritance of different code blocks 

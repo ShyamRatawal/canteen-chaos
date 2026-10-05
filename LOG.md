@@ -62,9 +62,28 @@ stuck is not.
 **What I would try next:**
 
 
-
 ## Extra credit
 
 Anything not on the bug log: a problem you found yourself, a test you
 wrote, or a fix you are unsure about. Same format, plus one line on how
 you noticed it.
+
+
+
+
+### CC-01 : "The search suggestions are behind everything"
+
+**Reproduced:** Searched for some coffee and weren't able to see the suggestions as it was behind the cat tabs. 
+
+**Cause:** the stacking order for div was the issue. cat tabs was overlapping the suggestions because of a higher z index.
+
+**Fix:** In the cat tabs changing the value to 0 works. But why 0? there were one button and one div tag stacked on top and by changing the stacking relationship the cursor now reaches the button. also by changing the z index to 0 the cat tabs reach the bottom of the stacking order.
+
+**Checked:** By ordering the coffee. Now the unwanted stacking is gone.
+
+**Time:** took like an hour as I'm learning new topics throughout the process.
+
+
+
+
+

@@ -6,44 +6,9 @@ This file is read as carefully as your code. A correct fix you cannot
 explain counts for little; a bug you could not fix but investigated
 honestly still counts for something.
 
-Delete the example before you submit.
 
 
 
-## Example — delete this
-
-### CC-99 — "The cart total is wrong"
-
-**Reproduced:** Added 2 dosas at Rs. 60 each. The cart showed
-Rs. 119.99999 instead of Rs. 130. Happened every time, on any dish with
-a price ending in .50.
-
-**Cause:** The total was being added up with plain floating point and
-never rounded, so 0.1 + 0.2 style errors showed up on screen. The
-rounding helper existed but this one place was not using it.
-
-**Fix:** Ran the total through the existing rounding helper instead of
-adding a new one, so every price on screen goes through the same path.
-
-**Checked:** Cart, checkout and the order screen all show Rs. 130 now.
-Prices without decimals still show without a trailing .00.
-
-**Time:** about 40 minutes, most of it working out that the cart and the
-order screen round in different places.
-
-
-
-## CC-0X — "<the complaint, in short>"
-
-**Reproduced:**
-
-**Cause:**
-
-**Fix:**
-
-**Checked:**
-
-**Time:**
 
 
 
@@ -102,15 +67,20 @@ you noticed it.
 
 
 
+### CC-05 — "The category bar scrolls away on my phone"
 
-## CC-05 — "The category bar scrolls away on my phone"
+**What I tried:** Reproduced the issue by scrolling through the menu on a small screen. Tried changing the category bars CSS to position: sticky and top: 0, but it did not work.
 
-**Reproduced:** Opened the menu on a small screen and scrolled down through the dishes. The category and filter bar scrolled away instead of staying visible at the top.
+**Where I got to:** Confirmed that the category and filter bar scrolls away instead of remaining visible at the top. I suspect the sticky positioning or surrounding layout may be involved, but I could not confirm the root cause.
 
-**Cause:** The category bar might be missing the correct sticky positioning.
+**What I would try next:** i would inspect the parent containers, their positioning and overflow properties to understand why the sticky behavior is not working.
 
-**Fix:** Tried position: sticky and top: 0, but the issue was not resolved.
 
-**Checked:** Reproduced the issue on a small screen and tested the sticky positioning properties.
 
-**Time:** Spent like 30 min tried everything even learning some new css.
+### CC-10 — "The price sort is reversed"
+
+**What I tried:** Reproduced the issue by selecting the price sorting option and observing that dishes appeared in the opposite order. Inspected the event listener for #sortSelect, which updates the selected sorting option and calls loadMenu().
+
+**Where I got to:** Identified the sorting dropdown event listener but could not confirm the exact cause. I suspect the price comparison logic may be sorting in the wrong direction.
+
+**What I would try next:** Trace how the selected sort option is processed inside loadMenu() and inspect the .sort() comparator to check whether ascending and descending price orders are reversed.

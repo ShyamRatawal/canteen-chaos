@@ -97,3 +97,20 @@ you noticed it.
 **Checked:** Now when dark mode is on the text is visible and when light mode is on the text is still visible
 
 **Time:** Took me like 40 mins to learn some new CSS and inheritance of different code blocks 
+
+
+
+
+
+
+## CC-05 — "The category bar scrolls away on my phone"
+
+**Reproduced:** Opened the menu on a small screen and scrolled down through the dishes. The category and filter bar scrolled away instead of staying visible at the top.
+
+**Cause:** The category bar might be missing the correct sticky positioning.
+
+**Fix:** Tried position: sticky and top: 0, but the issue was not resolved.
+
+**Checked:** Reproduced the issue on a small screen and tested the sticky positioning properties.
+
+**Time:** Spent like 30 min tried everything even learning some new css.
